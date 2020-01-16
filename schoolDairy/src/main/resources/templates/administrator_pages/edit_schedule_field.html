@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/typicons/src/font/typicons.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../assets/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+</head>
+
+    <body >
+       <div class="container-scroller">
+                 <div th:replace="administrator_pages/partials/_navbar"></div>
+            <div class="container-fluid page-body-wrapper">
+                     <div th:replace="administrator_pages/partials/_sidebar"> </div>
+                 <div class="main-panel">
+                            <!-- Radna povrsina -->
+                     <div class="content-wrapper">
+                                
+                                 <div class="row">
+                                 
+                         
+                                 
+                                 
+        <div class="col-12 grid-margin"> 
+        
+                     <!-- ---------------------------------------------------------- -->
+                      <div class="alert alert-success alert-dismissible" th:if="${saveSucces}" >
+                         <button type="button" class="close" data-dismiss="alert">&times;</button>
+                         <strong th:text="${saveSucces}"></strong>
+                      </div>
+                                      <!-- ---------------------------------- -->
+                      <div class="alert alert-danger alert-dismissible" th:if="${saveError}" >
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          <strong th:text="${saveError}"></strong>
+                     </div>
+                      <!-- ------------------------------------------------------------ --> 
+                      <div class="alert alert-success alert-dismissible" th:if="${deleteSucces}" >
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          <strong th:text="${deleteSucces}"></strong>
+                      </div>
+                     <!-- ------------------------------------------------------------ --> 
+         <div class="card">                          
+          <div class="card-body"> 
+                                
+           <table class="table table-striped">
+              <thead>
+                  <tr>
+                       <th>Време</th> 
+                       <th>Понедељак</th>
+                       <th>Уторак</th>
+                       <th>Среда</th>
+                       <th>Четвртак</th>
+                       <th>Петак</th>
+                  </tr>
+            </thead>
+              <tbody>
+                 
+                 <tr>
+                   
+                     <td> I час(08:00 - 09:00)</td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 1 AND field.day.id == 1}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 1 AND field.day.id == 2}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 1 AND field.day.id == 3}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 1 AND field.day.id == 4}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 1 AND field.day.id == 5}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                 </tr>
+                 
+                  <tr>
+                     <td> II час(09:00 - 10:00)</td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 2 AND field.day.id == 1}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 2 AND field.day.id == 2}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 2 AND field.day.id == 3}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 2 AND field.day.id == 4}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 2 AND field.day.id == 5}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                 </tr>
+                
+                <tr>
+                      <td>III час(10:00 - 11:00)</td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 3 AND field.day.id == 1}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 3 AND field.day.id == 2}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 3 AND field.day.id == 3}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 3 AND field.day.id == 4}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 3 AND field.day.id == 5}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                 </tr>
+                 
+                 <tr>
+                       <td>IV час(11:00 - 12:00)</td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 4 AND field.day.id == 1}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 4 AND field.day.id == 2}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 4 AND field.day.id == 3}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 4 AND field.day.id == 4}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 4 AND field.day.id == 5}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                 </tr>
+                 
+                 
+                 <tr>
+                     <td>V час(12:00 - 13:00)</td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 5 AND field.day.id == 1}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 5 AND field.day.id == 2}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 5 AND field.day.id == 3}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 5 AND field.day.id == 4}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                     <td><a  class="fa fa-trash" th:each="field: ${listOfField}" th:if="${field.time.id == 5 AND field.day.id == 5}" th:href= "@{'/admin/deleteSubjectFromField/' + ${field.id}}" th:text="${field.subject.subjectName}"></a></td>
+                 </tr>
+              
+              </tbody>
+          </table>
+       </div>
+     </div>
+     </div>
+     
+     
+     
+     <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Уређивање распореда часова</h4>
+                    
+                    <form class="form-sample" th:action="@{'/admin/saveScheduleField'}" th:object="${objOfScheduleField}" method="POST">
+                    
+                     <!-- -------------------------------------- -->
+                      <div class="form-group">
+                          <input class="form-control" type="hidden" th:field="*{id}"  />
+                       </div>
+                       <!-- -------------------------------------- -->
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Дан</label>
+                            <select class="form-control form-control-lg"  th:field="*{day}">
+                               <option th:value="0">---Изаберите дан---</option>
+                               <option th:each="i : ${listOfDay}"  th:text="${i.DayName}" th:value="${i.id}"></option>
+                            </select>
+                          </div>
+                        </div>
+                        
+                         <!-- -------------------------------------- -->
+                         <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Време</label>
+                            <select class="form-control form-control-lg"  th:field="*{time}">
+                               <option th:value="0">---Изаберите време---</option>
+                               <option th:each="i : ${listOfTime}"  th:text="${i.period}" th:value="${i.id}"></option>
+                            </select>
+                          </div>
+                        </div>
+                        <!-- -------------------------------------- -->
+                        </div>
+                         <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Предмет</label>
+                            <select class="form-control form-control-lg"  th:field="*{subject}">
+                               <option th:value="0">---Изаберите предмет---</option>
+                               <option th:each="i : ${listOfSubject}"  th:text="${i.subjectName}" th:value="${i.id}"></option>
+                            </select>
+                          </div>
+                        </div>
+                        <!-- -------------------------------------- -->
+                      <div class="form-group">
+                          <input class="form-control" type="hidden" th:value="${idOfSchedule}" th:id="schedule" th:name="schedule"  />
+                       </div>
+                       <!-- -------------------------------------- -->
+                     <div class="form-group">
+                           <button type="submit" class="btn btn-success mr-2" th:text="Сними"></button>
+                      </div>
+		               <!-- -------------------------------------- -->
+                      </form>
+                      
+            </div>
+     </div>
+     </div>          
+     
+     
+        
+          
+                                 
+                                 
+                                 </div>
+                                    
+                                 </div>
+
+  
+  </div> 
+  <!-- class "row" close  -->
+   
+   </div> 
+    <!-- class "content-wrapper" close  -->
+   
+   
+   <div th:replace="administrator_pages/partials/_footer"> </div>          
+        </div>
+  
+ </body>
+  
+ 
+    
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../assets/js/shared/off-canvas.js"></script>
+    <script src="../../assets/js/shared/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../assets/js/demo_1/dashboard.js"></script>
+    <!-- End custom js for this page-->
+</html>

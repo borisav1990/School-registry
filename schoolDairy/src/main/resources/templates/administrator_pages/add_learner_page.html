@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <script type="text/javascript" src="../../webjars/jquery/2.2.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/typicons/src/font/typicons.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../assets/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+</head>
+
+    <body >
+       <div class="container-scroller">
+                 <div th:replace="administrator_pages/partials/_navbar"></div>
+            <div class="container-fluid page-body-wrapper">
+                     <div th:replace="administrator_pages/partials/_sidebar"> </div>
+                 <div class="main-panel">
+                            <!-- Radna povrsina -->
+                     <div class="content-wrapper">
+                                
+                                 <div class="row">
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+           <div class="col-md-7 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4>Упис ученика</h4>
+                    <br>
+                     
+                     <!-- ---------------------------------------------------------- -->
+                      <div class="alert alert-success alert-dismissible" th:if="${saveSucces}" >
+                         <button type="button" class="close" data-dismiss="alert">&times;</button>
+                         <strong th:text="${saveSucces}"></strong>
+                      </div>
+                                      <!-- ---------------------------------- -->
+                      <div class="alert alert-danger alert-dismissible" th:if="${saveError}" >
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          <strong th:text="${saveError}"></strong>
+                     </div>
+                      <!-- ------------------------------------------------------------ --> 
+                      <div class="alert alert-success alert-dismissible" th:if="${deleteSucces}" >
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          <strong th:text="${deleteSucces}"></strong>
+                      </div>
+                     <!-- ------------------------------------------------------------ --> 
+                    
+                    
+                    
+                    
+                    <form class="forms-sample" action="#" th:action="@{'/admin/saveLearner'}"  th:object="${objOfLearner}" method="post">
+                                     
+                     <!-- ------------------------------------------ -->
+                      <input type="hidden" class="form-control" th:field="*{id}">
+                                 
+                     <!-- ------------------------------------ -->
+                    <div class="form-group">
+                      <label>Име</label>
+                      <input type="text" class="form-control form-control-lg" placeholder="Унесите име ученика..."  th:field="*{firstName}">
+                    </div>
+                    <!-- ------------------------------------ -->
+                    <div class="form-group">
+                      <label>Презиме</label>
+                      <input type="text" class="form-control" placeholder="Унесите презиме ученика..." th:field="*{lastname}">
+                    </div>
+                     <!-- ------------------------------------ -->
+                   
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Изаберите разред ученика</label>
+                      <select class="form-control form-control-lg"  th:field="*{level}">
+                        <option th:value="0">---Изаберите разред---</option>
+                        <option th:value="1">---Први разред---</option>
+                        <option th:value="2">---Други разред---</option>
+                        <option th:value="3">---Трећи разред---</option>
+                        <option th:value="4">---Четврти разред---</option>
+                        </select>
+                      </div>  
+                      
+                       <!-- ------------------------------------ -->
+                   
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Изаберите одељење ученика</label>
+                      <select class="form-control form-control-lg"  th:field="*{department}">
+                        <option th:value="0">---Изаберите одељење---</option>
+                        <option th:value="1">---1---</option>
+                        <option th:value="2">---2---</option>
+                        <option th:value="3">---3---</option>
+                        <option th:value="4">---4---</option>
+                        </select>
+                      </div>  
+                    
+                    
+                    
+                      <!-- ------------------------------------ -->
+                    <h4 class="card-title">Учитељ</h4>
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Изаберите учитеља за ученика</label>
+                      <select class="form-control form-control-lg"  th:field="*{user}">
+                        <option th:value="0">---Изаберите учитеља---</option>
+                        <option th:each="i : ${listOfTeacher}"  th:text="${i.firstName+ ' ' + i.lastName}" th:value="${i.id}"></option>
+                        </select>
+                      </div>  
+                   
+                      <!-- ------------------------------------ -->
+                      
+                    <h4 class="card-title">Родитељ</h4>
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Изаберите родитеља детета</label>
+                      <select class="form-control form-control-lg"  th:field="*{userParent}">
+                        <option th:value="0">---Изаберите родитеља---</option>
+                        <option th:each="i : ${listOfParent}"  th:text="${i.firstName+ ' ' +i.lastName}" th:value="${i.id}"  ></option>
+                        </select>
+                      </div>  
+                      
+                      <div class="form-group">
+                           <button type="submit" class="btn btn-success mr-2" th:text="${isUpdate} ? 'Измени' : 'Сними'"></button>
+                      </div>
+                   
+                   </form>
+                   
+                   
+    
+       <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Име</th>
+                      <th>Презиме</th>
+                       <th>Разред</th>
+                        <th>Одељење</th>
+                      <th>Учитељ</th>
+                      <th>Родитељ</th>
+                      
+                      
+                      <th>Уређивање</th>
+                  </tr>
+            </thead>
+              <tbody>
+                 <tr th:each="learner: ${listOfLearner}">
+                      
+                     <td th:text="${learner.id}"></td>
+                     <td th:text="${learner.firstName}"></td>
+                     <td th:text="${learner.lastname}"></td>
+                     <td th:text="${learner.level}"></td>
+                     <td th:text="${learner.department}"></td>
+                     <td th:text="${learner.user.firstName}"></td>
+                     <td th:text="${learner.userParent.firstName}"></td>
+                    
+                     
+                     <td>
+                        <a th:href="@{'/admin/editLearner/' + ${learner.id}}"><i class="fa fa-edit" title="Промена податке ученику." style="font-size:21px; padding:20px;"></i></a>
+                        <a class="fa fa-trash delBtn"    th:href="@{'/admin/deleteLearner/' + ${learner.id}}"  title="Избриши ученика." th:attr="data-name=${learner.firstName}, data-last=${learner.lastname}" style="font-size:21px; padding:20px;"></a>
+                    </td>
+                     
+                 </tr>
+              
+              </tbody>
+          
+          </table>
+    </div>
+   </div> 
+   </div> 
+</div> 
+  <!-- class "row" close  -->
+   
+   </div>
+    <!-- class "content-wrapper" close  -->
+   </div>
+    </div>
+    </div>
+    
+    
+    
+    
+    <!-- Delete popup -->
+     <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal"
+         role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Брисање оцене</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal"
+                            type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="alert alert-danger" id="deleteLearner">
+                        <!-- text is situated from JQuery -->
+                    </p>
+                    <input type="hidden" class="form-control" th:id="removeLearner" th:name="removeLearner">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal"
+                            type="button">Одустани
+                    </button>
+                    <a class="btn btn-danger" href="" id="delRef">Потврди</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Delete popup -->
+          
+        
+       
+ 
+ </body>
+ 
+  <div th:replace="administrator_pages/partials/_footer"> </div>  
+  
+    <script type="text/javascript" th:src="@{../../js/deleteUser.js}" src="../../static/js/deleteUser.js"></script>
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../assets/js/shared/off-canvas.js"></script>
+    <script src="../../assets/js/shared/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../assets/js/demo_1/dashboard.js"></script>
+    <!-- End custom js for this page-->
+</html>
